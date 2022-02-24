@@ -1,4 +1,5 @@
-pragma solidity ^0.4.24;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.4.23;
 
 // Import the library 'Roles'
 import "./Roles.sol";
@@ -43,12 +44,12 @@ contract DistributorRole {
   // Define an internal function '_addDistributor' to add this role, called by 'addDistributor'
   function _addDistributor(address account) internal {
     distributors.add(account);
-    DistributorAdded(account);
+    emit DistributorAdded(account);
   }
 
   // Define an internal function '_removeDistributor' to remove this role, called by 'removeDistributor'
   function _removeDistributor(address account) internal {
     distributors.remove(account);
-    DistributorRemoved(account);
+    emit DistributorRemoved(account);
   }
 }

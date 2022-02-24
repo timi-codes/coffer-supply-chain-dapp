@@ -1,4 +1,5 @@
-pragma solidity ^0.4.24;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.4.23;
 
 // Import the library 'Roles'
 import "./Roles.sol";
@@ -43,12 +44,12 @@ contract ConsumerRole {
   // Define an internal function '_addConsumer' to add this role, called by 'addConsumer'
   function _addConsumer(address account) internal {
     consumers.add(account);
-    ConsumerAdded(account);
+    emit ConsumerAdded(account);
   }
 
   // Define an internal function '_removeConsumer' to remove this role, called by 'removeConsumer'
   function _removeConsumer(address account) internal {
     consumers.remove(account);
-    ConsumerRemoved(account);
+    emit ConsumerRemoved(account);
   }
 }

@@ -1,9 +1,9 @@
-pragma solidity ^0.4.24;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.4.23;
 
-import '';
 
 /// Provides basic authorization control
-contract Ownable is SupplyChain {
+contract Ownable {
     address private origOwner;
 
     // Define an Event
@@ -22,7 +22,7 @@ contract Ownable is SupplyChain {
 
     /// Define a function modifier 'onlyOwner'
     modifier onlyOwner() {
-        require(isOwner());
+        require(isOwner(), "Only the owner can call this function");
         _;
     }
 
@@ -44,7 +44,7 @@ contract Ownable is SupplyChain {
 
     /// Define an internal function to transfer ownership
     function _transferOwnership(address newOwner) internal {
-        require(newOwner != address(0));
+        require(newOwner != address(0), "The new owner cannot be the 0 address");
         emit TransferOwnership(origOwner, newOwner);
         origOwner = newOwner;
     }
